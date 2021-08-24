@@ -22,6 +22,7 @@ function checkForReturnChange() {
     }
 
     else {
+        warningEl.innerText = ""
         let returnChange = cashGiven - bill
 
         for (var i = 0; i < denominationList.length; i++) {
