@@ -1,0 +1,39 @@
+input{
+    display:block;
+    height:30px;
+    width:250px;
+    border-radius:20px;
+    margin:20px;
+}
+
+p{
+    font-size:30px;
+}
+
+label{
+    font-size:20px;
+    color:red;
+}
+
+button{
+    padding:20px;
+    font-size:20px;
+    border-radius:20px;
+}
+caption{
+    margin-top:20px;
+    font-size: 20px;
+    margin-bottom:30px;
+    
+    color:red
+}
+
+.notes{
+    margin:10px;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
