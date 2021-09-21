@@ -1,76 +1,44 @@
-const billAndCash = document.querySelectorAll(".cash")
+let billEL = document.querySelector(".cash");
 
+let proceedBtn = document.querySelector("#proceed");
 
-const btnEl = document.querySelector("#btn")
+let billError = document.querySelector("#errorforbill");
 
-const rowEls = document.querySelectorAll(".notes")
+// console.log(billEL, proceedBtn);
 
-console.log(rowEls)
+let containerEl = document.querySelector(".container");
+let checkBtn = null;
+let amountgivenEl = null;
 
-const warningEl = document.querySelector("#errormsg")
+proceedBtn.addEventListener("click", function () {
+  if (billEL.value <= 0) {
+    billError.innerText = "give proper bill amount";
+  } else {
+    billError.innerText = "";
 
-var denominationList = [2000, 500, 100, 20, 10, 5, 1]
+    let labelEl = document.createElement("label");
+    labelEl.innerText = "Amount given";
+    containerEl.appendChild(labelEl);
+    labelEl.htmlFor = "amount";
 
-function checkForReturnChange() {
-    var bill = Number(billAndCash[0].value)
-    var cashGiven = Number(billAndCash[1].value)
-    //console.log(bill)
+    amountgivenEl = document.createElement("input");
+    amountgivenEl.type = "number";
+    containerEl.appendChild(amountgivenEl);
 
-    if (cashGiven < bill) {
-        warningEl.innerText = "Go and Wash THe Plates For sometime"
+    containerEl.removeChild(proceedBtn);
+    checkBtn = document.createElement("button");
+    checkBtn.innerText = "Check";
+    containerEl.appendChild(checkBtn);
+  }
+});
 
-    }
-
-    else {
-        warningEl.innerText = ""
-        let returnChange = cashGiven - bill
-
-        for (var i = 0; i < denominationList.length; i++) {
-            var respectiveNotes = Math.trunc(returnChange / denominationList[i])
-            returnChange = (returnChange % denominationList[i])
-            rowEls[i].innerText = respectiveNotes
-        }
-
-        /*let howManyTwoKs = Math.trunc(returnChange / 2000)
-        rowEl.innerText = howManyTwoKs
-        returnChange = returnChange % 2000
-        //console.log(howManyTwoKs)
-
-
-        let howManyFiveHun = Math.trunc(returnChange / 500)
-
-        //console.log(howManyFiveHun)
-        returnChange = (returnChange % 500)
-
-
-        let howManyHundreads = Math.trunc(returnChange / 100)
-
-        returnChange = (returnChange % 100)
-
-        let howManyTwenty = Math.trunc(returnChange / 20)
-        returnChange = (returnChange % 20)
-
-
-        let howManyTens = Math.trunc(returnChange / 10)
-        returnChange = (returnChange % 10)
-
-
-        let howManyFives = Math.trunc(returnChange / 5)
-        returnChange = (returnChange % 5)
-
-
-        let howManyones = Math.trunc(returnChange / 1)
-        returnChange = (returnChange % 1)
-        */
-
-
-
-
-
-
-
-    }
-}
-
-
-btnEl.addEventListener("click", checkForReturnChange)
+checkBtn.addEventListener("click", function () {
+  let amountErrorEl = document.createElement("h3");
+  containerEl.appendChild(amountErrorEl);
+  console.log(amountgivenEl);
+  if (amountgivenEl.value <= 0) {
+    amountgivenEl.innerText = "go and wash plates";
+  } else {
+    amountgivenEl.innerText = "";
+  }
+});
